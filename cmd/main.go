@@ -8,12 +8,10 @@ import (
 	"strings"
 
 	"DEV_INVENTORY/internal/logics"
-	//"DEV_INVENTORY/internal/learning"
-	// "DEV_INVENTORY/internal/logics"
+
 )
 
 func main() {
-	// for {
 	logics.Guide()
 	reader := bufio.NewReader(os.Stdin)
 	for {
@@ -36,12 +34,6 @@ func main() {
 		}
 	}
 
-	// learning.Learn_Choices(input[1])
 
-	// }
-	// Call guide
-	// Call guide_choice
 }
 
-func choice_resolver() {
-}
