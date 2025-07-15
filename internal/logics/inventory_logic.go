@@ -10,21 +10,12 @@ func Guide() {
 }
 
 func Guide_Choice(choice string) {
-     switch choice{
+	switch choice {
 	case "1":
 		fmt.Println("If you are learning what is it you are currently learning? ")
 	case "2":
 		fmt.Println("Are you engaging in: \n 1. A new project \n 2. A Continuing/Existing one ")
 	default:
 		fmt.Println("Not Building or Learning. Relax there ain't much of that in the job market.")
-	}
-}
-
-	
-
-// What happens if user chooses learning
-func Learning_Choice(choice string) {
-	if choice == "1" {
-		
 	}
 }
