@@ -12,7 +12,7 @@ func Guide() {
 func Guide_Choice(choice string) {
 	switch choice {
 	case "1":
-		fmt.Println("If you are learning what is it you are currently learning? ")
+		fmt.Println("If you are learning are you learning: \n 1. A new thing you have never journalled. \n 2. A continous thing you have ever journelled before. ")
 	case "2":
 		fmt.Println("Are you engaging in: \n 1. A new project \n 2. A Continuing/Existing one ")
 	default:
