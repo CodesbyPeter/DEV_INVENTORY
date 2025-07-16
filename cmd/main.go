@@ -3,47 +3,55 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
+	"strconv"
 	"strings"
 
+	"DEV_INVENTORY/internal/handlers"
 	"DEV_INVENTORY/internal/logics"
-
 )
 
 func main() {
-	logics.Guide()
-	reader := bufio.NewReader(os.Stdin)
+	scanner := bufio.NewScanner(os.Stdin)
+	// -- Initial guide and first action --
+	// Calling Guide once to get the initial option
+	initialOption := logics.Guide(scanner)
+	handleOption(initialOption, scanner)
+	
+	// -- Continous loop for subsequent actions --
+	// Infinite loop that breaks on Exit
 	for {
-		input, err := reader.ReadString('\n')
+		fmt.Println("\n Enter your next option: ")
+		fmt.Print("Type here (1 for Learning, 2 for Project, 3 to exit): ")
+		if !scanner.Scan() {
+			break // Exit if scanning fails
+		}
+		input := strings.TrimSpace(scanner.Text())
+		// Checking for Exit command first
+		if strings.EqualFold(input, "exit") || input == "3" {
+			fmt.Println("Exciting Dev_Inventory. GoodBye.")
+			return
+		}
+		// Trying passing input as an interger
+		nextOption, err := strconv.Atoi(input) // strconv.Atoi used for robust integer conversion
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println("Invalid input. Please enter a number (1,2 0r 3) or 'exit'.")
+			continue
 		}
-		input=strings.TrimSpace(input)
-		if input == "EXIT" {
-			break
-		}
-       // Handling Learning/Project directly in main file brings about issues in messiness and scaling
-		/* switch strings.TrimSpace(input) {
-		case "1":
-			fmt.Println("If you are learning\n are you learning: \n 1. A new thing you have never journalled. \n 2. A continous thing you have ever journelled before. ")
-		case "2":
-			fmt.Println("Are you engaging in: \n 1. A new project \n 2. A Continuing/Existing one ")
-		default:
-			fmt.Println("Not Building or Learning. Relax there ain't much of that in the job market.")
-		} */
+		handleOption(nextOption, scanner) // Helper function to be used for subsequent functions
 	}
 }
 
-// Extracting logic from each case into their own functions
-
-// Learning Function 
-func HandleLearning() {
-	fmt.Println("Are you: \n 1. Learning something new \n 2. Continuing with something you have learned before")
+func handleOption(option int, scanner *bufio.Scanner) {
+	switch option {
+	case 1:
+		handlers.HandleLearning(scanner)
+	case 2:
+		handlers.HandleProject(scanner)
+	case 3:
+		fmt.Println("Exciting Dev_Inventory. GoodBye.")
+		os.Exit(0)
+	default:
+		fmt.Println("Invalid selection. Please choose 1 for learning, 2 for project or 3 to exit.")
+	}
 }
-
-// Project Function
-func HandleProject() {
-	fmt.Println("Are you: \n 1. Working on a new project \n 2. Continuing with an existing one")
-}
-
