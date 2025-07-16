@@ -17,7 +17,7 @@ func main() {
 	// Calling Guide once to get the initial option
 	initialOption := logics.Guide(scanner)
 	handleOption(initialOption, scanner)
-	
+
 	// -- Continous loop for subsequent actions --
 	// Infinite loop that breaks on Exit
 	for {
