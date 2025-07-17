@@ -29,7 +29,7 @@ func main() {
 		input := strings.TrimSpace(scanner.Text())
 		// Checking for Exit command first
 		if strings.EqualFold(input, "exit") || input == "3" {
-			fmt.Println("Exciting Dev_Inventory. GoodBye.")
+			fmt.Println("Exiting Dev_Inventory. GoodBye.")
 			return
 		}
 		// Trying passing input as an interger
@@ -49,7 +49,7 @@ func handleOption(option int, scanner *bufio.Scanner) {
 	case 2:
 		handlers.HandleProject(scanner)
 	case 3:
-		fmt.Println("Exciting Dev_Inventory. GoodBye.")
+		fmt.Println("Exiting Dev_Inventory. GoodBye.")
 		os.Exit(0)
 	default:
 		fmt.Println("Invalid selection. Please choose 1 for learning, 2 for project or 3 to exit.")
