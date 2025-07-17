@@ -54,11 +54,11 @@ func HandleProject(scanner *bufio.Scanner) {
 	}
 	switch option {
 	case 1:
-		fmt.Println("Great! Start journaling your new learning journey.")
+		fmt.Println("Great! What have you started building? ")
 	case 2:
-		fmt.Println("Excellent! Keep pushing forward with your continuous learning.")
+		fmt.Println("Excellent! What feature have you implemented today for your project? ")
 	default:
-		fmt.Println("Invalid learning option. Please choose 1 or 2.")
+		fmt.Println("Invalid Project option. Please choose 1 or 2.")
 	}
 }
 
